@@ -1,0 +1,135 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* === Root Variables (Your Original) === */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* === Tailwind Base Layer Styling === */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+    @apply text-sm;
+  }
+}
+
+/* === Utilities Layer (Optional Custom Utility) === */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* === Custom Scrollbar for Chat === */
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* === Layout Sizing === */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Dropdown Overlay === */
+.dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+}
+
+/* === Skeleton Loaders === */
+.skeleton {
+  * {
+    pointer-events: none !important;
+  }
+
+  *[class^="text-"] {
+    color: transparent;
+    @apply rounded-md bg-foreground/20 select-none animate-pulse;
+  }
+
+  .skeleton-bg {
+    @apply bg-foreground/10;
+  }
+
+  .skeleton-div {
+    @apply bg-foreground/20 animate-pulse;
+  }
+}
+
+/* === ProseMirror Editor Styles === */
+.ProseMirror {
+  outline: none;
+}
+
+.cm-editor,
+.cm-gutters {
+  @apply bg-background dark:bg-zinc-800 outline-none selection:bg-zinc-900 !important;
+}
+
+/* === CodeMirror Selection & Active Line === */
+.ͼo.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground,
+.ͼo.cm-selectionBackground,
+.ͼo.cm-content::selection {
+  @apply bg-zinc-200 dark:bg-zinc-900 !important;
+}
+
+.cm-activeLine,
+.cm-activeLineGutter {
+  @apply bg-transparent !important;
+}
+
+.cm-activeLine {
+  @apply rounded-r-sm !important;
+}
+
+.cm-lineNumbers {
+  @apply min-w-7;
+}
+
+.cm-foldGutter {
+  @apply min-w-3;
+}
+
+.cm-lineNumbers .cm-activeLineGutter {
+  @apply rounded-l-sm !important;
+}
+
+/* === Suggestion Highlight === */
+.suggestion-highlight {
+  @apply bg-blue-200 hover:bg-blue-300 dark:hover:bg-blue-400/50 dark:text-blue-50 dark:bg-blue-500/40;
+}
